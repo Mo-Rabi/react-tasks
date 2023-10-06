@@ -15,13 +15,13 @@ class Child extends Component {
         </div>
 
         <button
-          className="btn btn-success me-2"
+          className="btn btn-success m-2"
           onClick={() => this.props.updatePriceHandler(this.props.index)}
         >
           Increase price
         </button>
         <button
-          className="btn btn-danger"
+          className="btn btn-danger m-2"
           onClick={() => this.props.deleteProductHandler(this.props.index)}
         >
           Delete

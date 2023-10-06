@@ -42,6 +42,8 @@ class Parent extends Component {
     products[itemIndex].price += 10;
     //!?. setState
     this.setState({ products });
+    //? 4. save  the updated product's price in local storage
+    localStorage.setItem("products", JSON.stringify(products));
   };
   //! ******************** Delete product *********************
   deleteProduct = (itemIndex) => {
@@ -99,7 +101,7 @@ class Parent extends Component {
           {this.state.products.map((product, index) => (
             <Child
               productDetails={product}
-              key={index}
+              key={index}//react will use this to compare vDOM and DOM
               index={index}
               updatePriceHandler={this.updatePrice}
               deleteProductHandler={this.deleteProduct}
