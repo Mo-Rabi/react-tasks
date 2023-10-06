@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Home from './components/home';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Navbar from './components/Navbar/Navbar';
+import Parent from './components/Parent/Parent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Navbar/>
     <App />
+    <Home />
+    <Parent/>
+
   </React.StrictMode>
 );
 
