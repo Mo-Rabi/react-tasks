@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class Child extends Component {
   render() {
     console.log(this.props);
-    let { title, price, category, } = this.props.productDetails;
-    
+    let { title, price, category } = this.props.productDetails;
+
     return (
       <div className="bg-warning m-3 p-3 rounded">
         <h2>Child</h2>

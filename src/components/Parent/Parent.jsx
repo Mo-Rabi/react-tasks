@@ -43,7 +43,7 @@ class Parent extends Component {
     //!?. setState
     this.setState({ products });
   };
-  //! ******************** Delete product ********************
+  //! ******************** Delete product *********************
   deleteProduct = (itemIndex) => {
     console.log("Hello from detele product", this.state.products[itemIndex]);
     //? to update state: 1. take copy of state
@@ -80,13 +80,12 @@ class Parent extends Component {
   componentDidMount() {
     // Retrieve the products array from local storage
     const storedProducts = localStorage.getItem("products");
-  
+
     // If there are stored products, parse the JSON string and update the state
     if (storedProducts) {
       this.setState({ products: JSON.parse(storedProducts) });
     }
   }
-  
 
   //!  ******************** Render ********************
   render() {
