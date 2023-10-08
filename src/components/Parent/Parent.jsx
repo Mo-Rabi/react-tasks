@@ -32,6 +32,33 @@ class Parent extends Component {
       },
     ],
   };
+
+  componentDidMount() {
+    // Retrieve the stored products from local storage
+    const storedProducts = localStorage.getItem("products");
+  
+    // If there are stored products, parse the JSON string
+    if (storedProducts) {
+      const parsedStoredProducts = JSON.parse(storedProducts);
+  
+      // Check if each stored product is already in the state products array
+      parsedStoredProducts.forEach((storedProduct) => {
+        const isProductPresent = this.state.products.some(
+          (product) => product.title === storedProduct.title
+        );
+  
+        // If the stored product is not already in the state products array, add it
+        if (!isProductPresent) {
+          this.setState((prevState) => ({
+            
+            products: [...prevState.products, storedProduct],
+          }));
+        }
+      });
+    }
+  }
+  
+
   //! **************** Update Price ********************
   updatePrice = (itemIndex) => {
     //using arrow function so it points to global scope
@@ -79,16 +106,6 @@ class Parent extends Component {
     localStorage.setItem("products", JSON.stringify(products));
   };
 
-  componentDidMount() {
-    // Retrieve the products array from local storage
-    const storedProducts = localStorage.getItem("products");
-
-    // If there are stored products, parse the JSON string and update the state
-    if (storedProducts) {
-      this.setState({ products: JSON.parse(storedProducts) });
-    }
-  }
-
   //!  ******************** Render ********************
   render() {
     return (
@@ -101,7 +118,7 @@ class Parent extends Component {
           {this.state.products.map((product, index) => (
             <Child
               productDetails={product}
-              key={index}//react will use this to compare vDOM and DOM
+              key={index} //react will use this to compare vDOM and DOM
               index={index}
               updatePriceHandler={this.updatePrice}
               deleteProductHandler={this.deleteProduct}

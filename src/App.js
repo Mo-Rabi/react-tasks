@@ -5,7 +5,7 @@ import { Component } from 'react';
 class App extends Component{
   state;
   render(){
-  return <h1> Hi from App</h1>
+  return <h1> Hi from App new</h1>
   }
 }
 
